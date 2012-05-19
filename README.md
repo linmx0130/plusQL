@@ -8,5 +8,5 @@ of Qt examples. You can also use these special widgets in your software
 under the license in COPYING ( it is a BSD-style license).
 
 Here is the list of the widgets plusQL includes:
- *pQLabelLineEdit - a widgets combined a QLabel and a QLineEdit
+ - pQLabelLineEdit - a widgets combined a QLabel and a QLineEdit
 
