@@ -10,7 +10,8 @@
        notice, this list of conditions and the following disclaimer in the
        documentation and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
 IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
 ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR
 ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
@@ -35,29 +36,6 @@ public:
 	pQLabelLineEdit(const QString & Label_text, 
 					const QString & LineEdit_contents,
 					QWidget *parent=0);
-public slots:
-	void clearLabel();
-	void setLabelText(const QString &);
-	void setLabelNum(int);
-	void setLabelNum(double);
-	
-	void clearLineEdit();
-	void setLineEditText(const QString &);
-	void selectAll();
-	void undo();
-	void redo();
-	void paste();
-	void cut();
-	void copy();
-
-signals:
-	void cursorPositionChanged(int,int);
-	void editingFinished();
-	void returnPressed();
-	void selectionChanged();
-	void textChanged(const QString &);
-	void textEdited(const QString &);
-private:
 	QLabel *Label;
 	QLineEdit *LineEdit;
 };
