@@ -2,7 +2,7 @@ plusQL -> pQLabelLineEdit
 
 It is a simple widgets combined a QLabel and a QLineEdit. The two members 
 are public so it's easy to use in your program. It shows how to build a 
-simple widgets.
+simple widget.
 
 public:
 	pQLabelLineEdit(const QString & Label_text, 

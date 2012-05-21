@@ -33,10 +33,15 @@ pQLabelLineEdit::pQLabelLineEdit(const QString & Label_text,
 	this->Label=new QLabel(Label_text);
 	this->LineEdit=new QLineEdit(LineEdit_contents);
 	this->Label->setBuddy(LineEdit);
+	//after calling setBuddy, if Label get focus, it will be moved to 
+	//the LineEdit
+
 	QHBoxLayout *mainlayout=new QHBoxLayout;
 	mainlayout->addWidget(Label);
 	mainlayout->addWidget(LineEdit);
 
 	setLayout(mainlayout);
+	//Layout is diffierent from widget, but setLayout can make a layout
+	//show in a widget
 }
 
