@@ -9,4 +9,6 @@ under the license in COPYING ( it is a BSD-style license).
 
 Here is the list of the widgets plusQL includes:
  - pQLabelLineEdit - a widgets combined a QLabel and a QLineEdit
+ - pQDoubleListChooser - a widgets provides 2 QListWidgets for users to 
+ 	choose somes item from one to the other one.
 

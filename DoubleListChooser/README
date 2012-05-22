@@ -1,0 +1,13 @@
+plusQL -> pQDoubleListChooser
+
+There are 2 QListWidgets in this widget. Users can easy to move items from 
+one to the other one. It could be used in a dialog for mutiple choice.It is
+also a good example for QListWidget. Because of my laziness, I made both the
+QListWidgets and QPushButtons public. You can call their member functions 
+in the way you like.
+
+public:
+	pQDoubleListChooser(QWidget *parent=0);
+	QListWidget *LeftList, *RightList;
+	QPushButton *toLeft,*toRight;
+
