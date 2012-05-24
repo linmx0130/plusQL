@@ -6,9 +6,14 @@ the index list to organize the widget pages.
 
 signals:
 	void listClicked(int row);
+	void currentWidgetChanged(int index);
 public slots:
 	void setCurrentIndex(int index);
 	void setCurrentItem(QListWidgetItem *item);
+	void setCurrentWidget(QWidget *widget);
+	void removeByIndex(int index);
+	void removeByItem(QListWidgetItem *item);
+	void removeByWidget(QWidget *widget);
 public:
 	pQListPagesWidget(QWidget *parent=0);
 	int addPage(QListWidgetItem *item, QWidget *widget);
@@ -18,7 +23,9 @@ public:
 	void setSizePolicy2(const QSizePolicy &forList, const QSizePolicy &forSWidget);
 	int currentIndex() const;
 
-
 *setSizePolicy2() is used to set the size policy of the QListWidget and the 
 QStackedWidget. It recieve 2 QSizePolicy objects and the first is for the 
 list while the second is for the StackedWidget.
+* In fact signal listClicked() and signal currentWidgetChanged() will be 
+emitted at the same time. If one is emitted, the other one will be also 
+emited. Because if one is changed, the other should be changed too.

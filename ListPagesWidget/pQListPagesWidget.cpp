@@ -30,6 +30,10 @@ void pQListPagesWidget::__ListClicked(int row){
 	SWidget->setCurrentIndex(row);
 	emit this->listClicked(row);
 }
+void pQListPagesWidget::__WidgetSet(int index){
+	List->setCurrentRow(index);
+	emit this->currentWidgetChanged(index);
+}
 //public function
 pQListPagesWidget::pQListPagesWidget(QWidget *parent)
 	:QWidget(parent)
@@ -48,6 +52,7 @@ pQListPagesWidget::pQListPagesWidget(QWidget *parent)
 	SWidget->setSizePolicy(size_policy);
 
 	connect(List,SIGNAL(currentRowChanged(int)),this,SLOT(__ListClicked(int)));
+	connect(SWidget,SIGNAL(currentChanged(int)),this,SLOT(__WidgetSet(int)));
 	setLayout(mainlayout);
 }
 
@@ -87,3 +92,41 @@ void pQListPagesWidget::setCurrentIndex(int index){
 void pQListPagesWidget::setCurrentItem(QListWidgetItem *item){
 	List->setCurrentItem(item);
 }
+void pQListPagesWidget::setCurrentWidget(QWidget *widget){
+	SWidget->setCurrentWidget(widget);
+}
+void pQListPagesWidget::removeByIndex(int index){
+	int tmp=currentIndex();
+	setCurrentIndex(index);
+	QListWidgetItem *item=List->currentItem();
+	QWidget *widget=SWidget->currentWidget();
+	setCurrentIndex(tmp);
+	List->removeItemWidget(item);
+	SWidget->removeWidget(widget);
+	delete item;
+	delete widget;
+}
+
+void pQListPagesWidget::removeByItem(QListWidgetItem *item){
+	int tmp=currentIndex();
+	setCurrentItem(item);
+	QWidget *widget=SWidget->currentWidget();
+	setCurrentIndex(tmp);
+	List->removeItemWidget(item);
+	SWidget->removeWidget(widget);
+	delete item;
+	delete widget;
+}
+
+void pQListPagesWidget::removeByWidget(QWidget *widget){
+	int tmp=currentIndex();
+	setCurrentWidget(widget);
+	QListWidgetItem *item=List->currentItem();
+	setCurrentIndex(tmp);
+	List->removeItemWidget(item);
+	SWidget->removeWidget(widget);
+	delete item;
+	delete widget;
+}
+
+

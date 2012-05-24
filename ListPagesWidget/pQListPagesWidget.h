@@ -36,11 +36,17 @@ class pQListPagesWidget : public QWidget
 		QStackedWidget *SWidget;
 	private slots:
 		void __ListClicked(int row);
+		void __WidgetSet(int index);
 	signals:
 		void listClicked(int row);
+		void currentWidgetChanged(int index);
 	public slots:
 		void setCurrentIndex(int index);
 		void setCurrentItem(QListWidgetItem *item);
+		void setCurrentWidget(QWidget *widget);
+		void removeByIndex(int index);
+		void removeByItem(QListWidgetItem *item);
+		void removeByWidget(QWidget *widget);
 	public:
 		pQListPagesWidget(QWidget *parent=0);
 		int addPage(QListWidgetItem *item, QWidget *widget);
