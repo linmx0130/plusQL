@@ -35,6 +35,13 @@ pQDoubleListChooser::pQDoubleListChooser(QWidget *parent)
 	//build the ui
 	QHBoxLayout *mainlayout=new QHBoxLayout;
 	QVBoxLayout *buttonlayout=new QVBoxLayout;
+	
+	QSizePolicy listsizepolicy(QSizePolicy::Preferred
+					,QSizePolicy::Preferred);
+	listsizepolicy.setHorizontalStretch(3);
+	LeftList->setSizePolicy(listsizepolicy);
+	RightList->setSizePolicy(listsizepolicy);
+
 	buttonlayout->addWidget(toLeft);
 	buttonlayout->addWidget(toRight);
 	mainlayout->addWidget(LeftList);
