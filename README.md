@@ -11,4 +11,5 @@ Here is the list of the widgets plusQL includes:
  - pQLabelLineEdit - a widgets combined a QLabel and a QLineEdit
  - pQDoubleListChooser - a widgets provides 2 QListWidgets for users to 
  	choose somes items from one and move them to the other one.
-
+ - pQListPagesWidget - a widget used a list to organize the stacked widget
+ 	pages.

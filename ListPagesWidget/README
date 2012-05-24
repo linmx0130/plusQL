@@ -1,0 +1,24 @@
+plusQL -> pQListPagesWidget
+
+This widget has a QListWidget and a QStackedWidget. They are designed to 
+show a "Preferences" dialog or other things which need a list widget to be 
+the index list to organize the widget pages.
+
+signals:
+	void listClicked(int row);
+public slots:
+	void setCurrentIndex(int index);
+	void setCurrentItem(QListWidgetItem *item);
+public:
+	pQListPagesWidget(QWidget *parent=0);
+	int addPage(QListWidgetItem *item, QWidget *widget);
+	int addPage(const QString &label, QWidget *widget);
+	int insertPage(int index,QListWidgetItem *item, QWidget *widget);
+	int insertPage(int index,const QString &label, QWidget *widget);
+	void setSizePolicy2(const QSizePolicy &forList, const QSizePolicy &forSWidget);
+	int currentIndex() const;
+
+
+*setSizePolicy2() is used to set the size policy of the QListWidget and the 
+QStackedWidget. It recieve 2 QSizePolicy objects and the first is for the 
+list while the second is for the StackedWidget.
