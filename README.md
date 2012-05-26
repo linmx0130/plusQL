@@ -13,3 +13,4 @@ Here is the list of the widgets plusQL includes:
  	choose somes items from one and move them to the other one.
  - pQListPagesWidget - a widget used a list to organize the stacked widget
  	pages.
+ - pQDigitStopWatch - using QTimer to simulate a digit stop watch.
