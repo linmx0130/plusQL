@@ -30,9 +30,10 @@ pQDigitStopWatch::pQDigitStopWatch(QWidget *parent):
 		QWidget(parent)
 {
 	hour=minute=second=msec=0;
+	alarmmark=0;
 	view=new QLabel;
 	timer=new QTimer(this);
-	format="%1:%2:%3:%4";
+	format="%h%:%m%:%s%:%ms%";
 	connect(timer,SIGNAL(timeout()),this,SLOT(_timeout_doing()));
 	connect(timer,SIGNAL(timeout()),this,SIGNAL(timeout()));
 	redrawview();
@@ -70,6 +71,16 @@ void pQDigitStopWatch::_timeout_doing(){
 		hour+=minute/60;
 	}
 	redrawview();
+	if (alarmmark) {
+	//	if (QTime(hour,minute,second,msec)==alarmrec){
+		if ((alarmrec.hour()==this->hour)&&
+			(alarmrec.minute()==this->minute)&&
+			(alarmrec.second()==this->second)&&
+			(alarmrec.msec()==this->msec)){
+			alarmmark=0;
+			emit alarm();
+		}
+	}
 }
 void pQDigitStopWatch::redrawview(){
 	char twodig[3];
@@ -102,4 +113,11 @@ bool pQDigitStopWatch::isActive(){
 }
 void pQDigitStopWatch::setInterval(int msec){
 	this->setInterval(msec);
+}
+QTime pQDigitStopWatch::currentTime(){
+	return QTime(this->hour,this->minute,this->second,this->msec);
+}
+void pQDigitStopWatch::alarmAtTime(QTime time){
+	this->alarmmark=1;
+	this->alarmrec=time;
 }

@@ -26,11 +26,13 @@ DAMAGE.
 #define PQNUMBERSTOPWATCH_H
 #include <QLabel>
 #include <QTimer>
-
+#include <QTime>
 class pQDigitStopWatch:public QWidget{
 	Q_OBJECT
 private:
 	int hour,minute,second,msec;
+	bool alarmmark;
+	QTime alarmrec;
 	QLabel *view;
 	QTimer *timer;	
 	QString format;
@@ -44,11 +46,14 @@ public slots:
 	void setFormat(QString formatstring);
 signals:
 	void timeout();
+	void alarm();
 public:
 	pQDigitStopWatch(QWidget *parent=0);
 	bool isActive();
 	int interval();
 	void setInterval(int );
+	QTime currentTime();
+	void alarmAtTime(QTime);
 };
 
 #endif

@@ -16,9 +16,17 @@ milliseconds. The interval is in milliseconds.
 		void setFormat(QString formatstring);
 	signals:
 		void timeout();
+		void alarm();
 	public:
 		pQDigitStopWatch(QWidget *parent=0);
 		bool isActive();
 		int interval();
 		void setInterval(int );
+		QTime currentTime();
+		void alarmAtTime(QTime);
 	
+* You can use alarmAtTime() to tell pQDigitStopWatch a time and then it will
+emit signal alarm() to tell the program that it's time to do somgthing.
+* Each time the numbers of stop watch changed, signal timeout() will be 
+emitted.
+
