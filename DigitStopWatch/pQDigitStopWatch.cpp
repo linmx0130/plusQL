@@ -49,7 +49,8 @@ void pQDigitStopWatch::start(int msec){
 };
 void pQDigitStopWatch::reset(){
 	hour=minute=second=msec=0;
-	_timeout_doing();
+	this->stop();
+	redrawview();
 }
 void pQDigitStopWatch::stop(){
 	this->timer->stop();
@@ -106,6 +107,7 @@ void pQDigitStopWatch::redrawview(){
 	view->setText(newview);
 }
 void pQDigitStopWatch::setFormat(QString formatstring){
+	if (this->isActive()) return ; 
 	this->format=formatstring;
 }
 bool pQDigitStopWatch::isActive(){
@@ -121,3 +123,11 @@ void pQDigitStopWatch::alarmAtTime(QTime time){
 	this->alarmmark=1;
 	this->alarmrec=time;
 }
+void pQDigitStopWatch::setTime(QTime time){
+	if (this->isActive()) return;
+	this->hour=time.hour();
+	this->minute=time.minute();
+	this->second=time.second();
+	this->msec=time.msec();
+	redrawview();
+};

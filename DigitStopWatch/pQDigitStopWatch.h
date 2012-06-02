@@ -44,6 +44,7 @@ public slots:
 	void start(int );
 	void stop();
 	void setFormat(QString formatstring);
+	void setTime(QTime);
 signals:
 	void timeout();
 	void alarm();
