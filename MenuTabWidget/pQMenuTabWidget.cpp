@@ -71,6 +71,7 @@ pQMenuTabWidget::pQMenuTabWidget(QWidget *parent)
 	this->menubutton->setMenu(this->menu);
 	this->buttonbar->addWidget(this->menubutton);
 	this->buttonbar->addStretch();
+	this->buttonbar->setSpacing(0);
 	mainlayout->addLayout(buttonbar);
 	mainlayout->addLayout(view);
 	//this->buttongroup->hide();
@@ -125,4 +126,7 @@ void pQMenuTabWidget::setCurrentButton(QPushButton *button)
 			break;
 		}
 	}
+}
+QPushButton* pQMenuTabWidget::menuButton(){
+	return this->menubutton;
 }

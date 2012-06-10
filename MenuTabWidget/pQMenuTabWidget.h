@@ -62,11 +62,12 @@ class pQMenuTabWidget:public QWidget
 	public slots:
 		void setCurrentPage(int page_num);
 		void setCurrentButton(QPushButton *button);
+		void setMenuButtonText(const QString & text);
 	public:
 		pQMenuTabWidget(QWidget *parent=0);
 		void addMenuTabItem(pQMenuTabItem *item);
 		void addPage(const QString &text,QWidget *page);
-		void setMenuButtonText(const QString & text);
 		QMenu *menuObject();
+		QPushButton *menuButton();
 };
 
