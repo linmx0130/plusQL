@@ -59,6 +59,10 @@ class pQMenuTabWidget:public QWidget
 		QButtonGroup *buttongroup;
 		QList <pQMenuTabItem*> *item_list;
 		bool clicked;
+	signals:
+		void currentChanged(int index);
+		void menuAboutToShow();
+		void menuAboutToHide();
 	public slots:
 		void setCurrentPage(int page_num);
 		void setCurrentButton(QPushButton *button);
@@ -67,6 +71,9 @@ class pQMenuTabWidget:public QWidget
 		pQMenuTabWidget(QWidget *parent=0);
 		void addMenuTabItem(pQMenuTabItem *item);
 		void addPage(const QString &text,QWidget *page);
+		void removeMenuTabItem(pQMenuTabItem *item);
+		void removePage(QWidget *page);
+		pQMenuTabItem* itemAt(int pos);
 		QMenu *menuObject();
 		QPushButton *menuButton();
 };

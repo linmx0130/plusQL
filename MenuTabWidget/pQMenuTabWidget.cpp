@@ -74,7 +74,11 @@ pQMenuTabWidget::pQMenuTabWidget(QWidget *parent)
 	this->buttonbar->setSpacing(0);
 	mainlayout->addLayout(buttonbar);
 	mainlayout->addLayout(view);
-	//this->buttongroup->hide();
+	
+	connect(this->menu,SIGNAL(aboutToShow()),
+			this,SIGNAL(menuAboutToShow()));
+	connect(this->menu,SIGNAL(aboutToHide()),
+			this,SIGNAL(menuAboutToHide()));
 	this->setLayout(mainlayout);
 };
 
@@ -115,7 +119,9 @@ void pQMenuTabWidget::setCurrentPage(int page_num)
 	if (!this->item_list->operator[](page_num)->button()->isChecked()){
 		this->item_list->operator[](page_num)->button()->setChecked(true);
 	}
+	emit currentChanged(page_num);
 }
+//setCurrentButton is based on setCurrentPage
 void pQMenuTabWidget::setCurrentButton(QPushButton *button)
 {
 	QList<pQMenuTabItem*> list_c=*(this->item_list);
@@ -129,4 +135,27 @@ void pQMenuTabWidget::setCurrentButton(QPushButton *button)
 }
 QPushButton* pQMenuTabWidget::menuButton(){
 	return this->menubutton;
+}
+//Attention: you need to delete the button and the page yourself only when
+//you use removeMenuTabItem. Other remove functions are based on it.
+void pQMenuTabWidget::removeMenuTabItem(pQMenuTabItem *item){
+	this->buttonbar->removeWidget(item->button());
+	this->buttongroup->removeButton(item->button());
+	this->view->removeWidget(item->page());
+	this->item_list->removeAll(item);
+}
+pQMenuTabItem* pQMenuTabWidget::itemAt(int pos){
+	return this->item_list->operator[](pos);
+}
+void pQMenuTabWidget::removePage(QWidget *page){
+	QList<pQMenuTabItem*> list_c=*(this->item_list);
+	QList<pQMenuTabItem*>::const_iterator i=list_c.begin();
+	for(int now=0;i!=list_c.end();now++,i++){
+		if (page==((*i)->page())){
+			this->removeMenuTabItem(*i);
+			delete (*i)->button();
+			delete (*i)->page();
+			break;
+		}
+	}
 }
