@@ -14,3 +14,5 @@ Here is the list of the widgets plusQL includes:
  - pQListPagesWidget - a widget used a list to organize the stacked widget
  	pages.
  - pQDigitStopWatch - using QTimer to simulate a digit stop watch.
+ - pQMenuTabWidget - providing a menu and a group of buttons to hide the 
+    menu bar and to organize the stacked widget pages.
